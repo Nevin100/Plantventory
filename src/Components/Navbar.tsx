@@ -1,9 +1,14 @@
 import { Button } from "@/Components/ui/button";
 import Link from "next/link";
-import { Sprout, HomeIcon } from "lucide-react";
+import { Sprout, HomeIcon, LogIn, LogOutIcon } from "lucide-react";
 import  DarkModeToggle  from "@/Components/toggle-mode";
+import { stackServerApp } from "@/stack";
+import { UserButton } from "@stackframe/stack";
 
-export default function Navbar(){
+
+ const Navbar = async () => {
+  const user = await stackServerApp.getUser();
+   const app = await stackServerApp.urls;
   return (
     <nav className="sticky top-0 w-full border-b bg-background/95 backgdrop-blur supports-[backdrop-filter]:bg-background/60 z-50 ">
       <div className="max-w-7xl mx-auto px-4">
@@ -33,11 +38,30 @@ export default function Navbar(){
             </Button>
 
           <Button variant={"ghost"} className="flex items-center gap-2" asChild>
-            <DarkModeToggle/>
-          </Button>  
+              <DarkModeToggle/>
+            </Button> 
+
+            {user ? (
+              <Button variant={"ghost"} className="flex items-center gap-4" asChild>
+            <Link href={app.signOut}>
+                  <LogOutIcon className="w-4 h-4" />
+                  <span className="hiddne lg:inline">SignOut</span>
+                   <UserButton/>
+            </Link>
+              </Button>) :
+              (
+              <Button variant={"ghost"} className="flex items-center gap-2" asChild>
+                <Link href={app.signIn}>
+                  <LogIn className="w-4 h-4" />
+                  <span className="hiddne lg:inline">LogIn</span>
+                </Link>
+              </Button>   
+            )}
           </div>
-          </div>
+        </div>
       </div>
     </nav>
   )
 }
+
+export default Navbar;

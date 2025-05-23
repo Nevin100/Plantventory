@@ -1,7 +1,9 @@
-export default function Home(){
+import Hero05 from "@/Components/Hero"
+
+export default function Home() {
   return (
     <div>
-      <h1>Hello world!!</h1>
+      <Hero05/>
     </div>
   )
 }
