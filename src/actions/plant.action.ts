@@ -41,8 +41,12 @@ const getplants = async (searchTerm?: string) => {
   }
 }
 
+export const getPlantsId = async(id: string ) =>{
+  return await prisma.plant.findUnique({
+    where : {id}
+  })
+}
 // 📤 Export the function for use in routes or components
 export default getplants;
-
 
 
