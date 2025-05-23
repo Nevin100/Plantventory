@@ -14,15 +14,7 @@ import { Search } from "lucide-react";
 import { Combobox } from "./ui/combo-box";
 import { useState } from "react";
 import getplants from "@/actions/plant.action";
-
-// const plants = [{
-
-//   id: "12345",
-//   name: "Snake Plant",
-//   category: "Indoor",
-//   price: 2,
-//   stock: 10
-// }]
+import { useRouter } from "next/navigation";
 
 type Plant = Awaited<ReturnType<typeof getplants>>
 
@@ -31,11 +23,13 @@ interface InventoryTableProps {
 }
 
 export default function InventoryTable({plants} : InventoryTableProps) {
+
   const [selectedCategory, setSelectedCategory] = useState("")
   const [searchTerm, setSearchterm] = useState("");
-
+  const Router = useRouter()
   const filteredPlants = plants?.userPlants?.filter((plants : any) => 
   plants.name.toLowerCase().includes(searchTerm.toLowerCase()) && (selectedCategory == "" || plants.category == selectedCategory))
+
   return (
     <div className="w-full ">
        <div className="flex flex-row justify-start items-center gap-4 py-4">
@@ -48,8 +42,9 @@ export default function InventoryTable({plants} : InventoryTableProps) {
     {/* Combobox placed outside of the Input container */}
     <div className="w-fit">
       <Combobox value={selectedCategory} onChange={(val) => setSelectedCategory(val)} />
-        </div>
-        </div>
+    </div>
+  </div>
+
  <Table>
       <TableHeader>
         <TableRow>
@@ -61,8 +56,12 @@ export default function InventoryTable({plants} : InventoryTableProps) {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {filteredPlants?.map((plant : any) => (
-          <TableRow className="cursor-pointer" key={plant.id}>
+        {filteredPlants?.map((plant : any) => {
+          const slugifiedName = plant.name.toLowerCase().replace(/\s+/g,"-");
+          const slug = `${plant.id}--${slugifiedName}`;
+          const url = `/plants/${slug}`  ;
+          return (
+          <TableRow className="cursor-pointer" key={plant.id} onClick={() => Router.push(url)}>
             <TableCell>{plant.name}</TableCell>
             <TableCell>{plant.category}</TableCell>
             <TableCell className="font-bold">{plant.stock}</TableCell>
@@ -74,12 +73,9 @@ export default function InventoryTable({plants} : InventoryTableProps) {
               </div>
               
             </TableCell>
-          </TableRow>
-
-        
-        ))}
-      </TableBody>
-      
+          </TableRow> 
+        )})}
+      </TableBody>  
     </Table>
     </div>
 
