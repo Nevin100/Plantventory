@@ -21,6 +21,7 @@ export default function PlantCard({ plant }: PlantCardProps) {
     return <div>Plant data is not available.</div>;
   }
 
+  
   return (
     <Card className="max-w">
       <div className="flex flex-row">
