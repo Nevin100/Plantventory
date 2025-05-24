@@ -21,6 +21,7 @@ import { Textarea } from "@/Components/ui/textarea";
 import { Button } from "@/Components/ui/button";
 import { createPlant } from "@/actions/plant.action";
 import toast from "react-hot-toast";
+import ImageUpload from "./ImageUpload";
 
 export default function AlertDialogDemo() {
 
@@ -53,6 +54,7 @@ export default function AlertDialogDemo() {
 
 
   return (
+    
     <AlertDialog>
       <AlertDialogTrigger asChild>
         <Button variant='default' className="ml-auto flex items-center gap-2 cursor-pointer" asChild>
@@ -69,7 +71,7 @@ export default function AlertDialogDemo() {
             Fill out the form below to add a new plant to your inventory
           </AlertDialogDescription>
 
-          <form onSubmit={handleSubmit} className="mb-6">
+          <form onSubmit={handleSubmit} className="mb-6 max-h-[45vh] overflow-y-auto pr-4">
           <div className="grid grid-cols-2 mb-4 gap-8">
             <div>
               <Label htmlFor="name" className="mt-4">Name</Label>
@@ -125,7 +127,7 @@ export default function AlertDialogDemo() {
           </div>
 
           {/* Image Upload*/}
-          {/* <div className="py-5">
+            <div className="w-full py-2 ">
           <ImageUpload
             endpoint="postImage"
             value={formData.imageUrl}
@@ -133,7 +135,7 @@ export default function AlertDialogDemo() {
               handleChange("imageUrl", url);
             }}
           />
-          </div> */}
+          </div>
           
 
           <AlertDialogFooter className="mt-8">
@@ -145,5 +147,6 @@ export default function AlertDialogDemo() {
        
       </AlertDialogContent>
     </AlertDialog>
+    
   );
 }
