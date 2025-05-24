@@ -1,10 +1,14 @@
+'use client'
+
 import { Badge } from "@/Components/ui/badge";
 import { Button } from "@/Components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const Hero05 = () => {
+  const router = useRouter()
   return (
     <div className="min-h-screen flex items-center justify-center overflow-hidden">
       <div className="max-w-screen-xl w-full mx-auto grid lg:grid-cols-2 gap-12 px-6 py-12 lg:py-0">
@@ -19,7 +23,7 @@ const Hero05 = () => {
            PlantVentory is a personalized digital plant inventory and notes platform designed to help users keep track of their favorite plants and herbs. It allows individuals to curate a customized list of flora, including medicinal herbs, houseplants, and garden greens.
           </p>
           <div className="mt-12 flex items-center gap-4">
-            <Button size="lg" className="rounded-full text-base cursor-pointer">
+            <Button size="lg" className="rounded-full text-base cursor-pointer" onClick={()=> router.push("/plants")}>
               Get Started 🌱 <ArrowUpRight className="!h-5 !w-5" />
             </Button>
           </div>
