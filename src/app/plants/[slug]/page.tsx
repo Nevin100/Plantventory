@@ -5,7 +5,7 @@ import { SignIn } from "@stackframe/stack";
 
 const PlantPage = async({params} : {params : {slug : string}}) => {
   const user = await stackServerApp.getUser();
-  const [id] = params.slug.split("--");
+  const [id] = await params.slug.split("--");
   const plant = await getPlantsId(id);
   
   if(!user) {return <SignIn/>}
