@@ -19,19 +19,26 @@ import { Combobox } from "@/Components/ui/combo-box";
 import { Label } from "@/Components/ui/label";
 import { Textarea } from "@/Components/ui/textarea";
 import { Button } from "@/Components/ui/button";
-import { createPlant } from "@/actions/plant.action";
+import { editPlant } from "@/actions/plant.action";
 import toast from "react-hot-toast";
+import { getPlantsId } from "@/actions/plant.action";
 
-export default function AlertDialogDemo() {
+type Plant = NonNullable<Awaited<ReturnType<typeof getPlantsId>>>
+
+interface EditDialogProps {
+  plant : Plant;
+} 
+
+export default function EditDialog({plant}: EditDialogProps) {
 
   const [formData,setFormData] = useState({
-    name:"",
-    description:"",
-    stock:1,
-    price:1,
-    category:"",
-    userId:"",
-    imageUrl:""
+    name:plant?.name.trim(),
+    description:(plant?.description || "").trim(),
+    stock:plant?.stock,
+    price:plant?.price,
+    category:plant?.category.trim(),
+    userId:plant?.userId.trim(),
+    imageUrl:plant?.imageUrl || ""
   });
 
   const handleChange = (field: string, value: string | number) => {
@@ -42,12 +49,12 @@ export default function AlertDialogDemo() {
   const handleSubmit = async(e : React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     try{
-      const newPlant = await createPlant(formData);
+      const newPlant = await editPlant(plant.id ,formData);
       console.log(newPlant);
-      toast.success("Plant Created Successfully!!")
+      toast.success("Plant Updation Successful!!")
     }catch(error : any){
       console.log(error);
-      toast.error("Plant created Failed")
+      toast.error("Plant Updation Failed")
     }
   }
 
@@ -58,7 +65,7 @@ export default function AlertDialogDemo() {
         <Button variant='default' className="ml-auto flex items-center gap-2 cursor-pointer" asChild>
           <span >
             <Sprout className="w-4 h-4"/>
-            Add Plant
+            Edit Plant
           </span>
         </Button>
       </AlertDialogTrigger>
@@ -66,7 +73,7 @@ export default function AlertDialogDemo() {
         <AlertDialogHeader>
           <AlertDialogTitle>Add a Plant ?</AlertDialogTitle>
           <AlertDialogDescription className="text-[15px]">
-            Fill out the form below to add a new plant to your inventory
+            Fill out the form below to edit the plant to your inventory
           </AlertDialogDescription>
 
           <form onSubmit={handleSubmit} className="mb-6">

@@ -46,7 +46,56 @@ export const getPlantsId = async(id: string ) =>{
     where : {id}
   })
 }
+
+export async function createPlant(data: any) {
+  console.log("Creating Plants");
+  console.log(data);
+  try {
+    const currentuserId = await getUserId();
+    if(!currentuserId) return;
+
+    const newPlant = await prisma.plant.create({
+      data: {
+        ...data,
+        userId: currentuserId,
+      }
+    })
+    return newPlant;
+  } catch (error : any) {
+    console.log(error)
+  }
+}
+
+export async function editPlant(id: string, data: any) {
+  try {
+    const currentuserId = await getUserId();
+    if (!currentuserId) return;
+
+    const updatedPlant = await prisma.plant.update({
+      where: { id },
+      data :{
+      ...data,
+      userId: currentuserId
+    }
+});
+    console.log("Plant Updated Successfully", updatedPlant)
+  } catch (error: any) {
+    console.log(error);
+  }
+}
+
+export async function deletePlant(id: string) {
+  try {
+    const currentuserId = await getUserId();
+    if (!currentuserId) return;
+
+    const deletedPlant = await prisma.plant.delete({
+      where: { id }
+    });
+    console.log("Plant Deleted Successfully", deletedPlant)
+  } catch (error: any) {
+    console.log(error);
+  }
+}
 // 📤 Export the function for use in routes or components
 export default getplants;
-
-
