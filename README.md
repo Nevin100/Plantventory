@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌱 Plantventory — Track Your Greens Like a Pro 🪴✨
 
-## Getting Started
+![image](https://github.com/user-attachments/assets/3c8e8f66-1971-4d6c-b57a-9c90947fca90)
 
-First, run the development server:
 
+Welcome to **Plantventory**, your personal jungle journal!  
+A full-stack, modern-as-heck plant inventory app built with **Next.js**, **TypeScript**, **Prisma**, **Neon (PostgreSQL)**, **Stack Auth**, and **UploadThing**.  
+Curate, care for, and celebrate your favorite **medicinal herbs**, **houseplants**, and **garden greens** — all in one smooth digital space. 🌼🧪🌾  
+
+---
+
+## 🚀 Features That’ll Make You Go “Daaaamn”  
+
+- 🪴 **Custom Plant Inventory**  
+  - Add, edit, and organize all your leafy friends with love and labels.  
+  - Save your favs — from lavender to lucky bamboo.  
+
+- 🧠 **Smart Notes**  
+  - Log care routines, growth stages, or that time your aloe bloomed (finally).  
+
+- 📸 **Image Uploads (via UploadThing)**  
+  - Snap and stash pics of your plants. Flex that monstera!  
+
+- 🔐 **Secure Authentication (Stack Auth)**  
+  - Sign in safely, no monkey business.  
+
+- 📦 **Robust Backend**  
+  - Prisma + Neon PostgreSQL = the perfect soil for your plant data.  
+
+- ⚡ **Fully Typed with TypeScript**  
+  - Because bugs belong in the garden, not your code.  
+
+---
+
+## 🧪 Tech Stack Breakdown  
+
+| Layer     | Tech Used               |
+|-----------|-------------------------|
+| Frontend  | Next.js + TypeScript    |
+| Styling   | Tailwind CSS            |
+| Auth      | Stack Auth              |
+| Database  | Neon (PostgreSQL)       |
+| ORM       | Prisma                  |
+| Uploads   | UploadThing             |
+
+---
+
+## 🛠️ Getting Started — Plant Your Code  
+
+### 🌿 Prerequisites  
+- Node.js (v16+)  
+- PostgreSQL (Neon, or local if you're feelin’ vintage)  
+
+### Live Preview 🚨
+![image](https://github.com/user-attachments/assets/fc38dc2f-837d-4934-ab65-afae386537f1)
+![image](https://github.com/user-attachments/assets/9a800e22-5d24-4100-abc5-7828647043b0)
+
+
+### 🚨 Clone & Run  
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+git clone https://github.com/yourusername/plantventory.git
+cd plantventory
+npm install
