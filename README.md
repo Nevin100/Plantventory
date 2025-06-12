@@ -49,7 +49,7 @@ Curate, care for, and celebrate your favorite **medicinal herbs**, **houseplants
 
 ### 🌿 Prerequisites  
 - Node.js (v16+)  
-- PostgreSQL (Neon, or local if you're feelin’ vintage)  
+- PostgreSQL (Neon & StackAuth, or local if you're feelin’ vintage)  
 
 ### Live Preview 🚨
 ![image](https://github.com/user-attachments/assets/fc38dc2f-837d-4934-ab65-afae386537f1)
